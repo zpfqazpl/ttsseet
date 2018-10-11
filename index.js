@@ -14,7 +14,7 @@ const bodyParser = require("body-parser")
 //使用body-parser
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
-//router解析
+
 
 
 
@@ -25,6 +25,9 @@ res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
 res.header("X-Powered-By",' 3.2.1') 
 if(req.method=="OPTIONS") res.send(200);
 /*让options请求快速返回*/ else next(); });
+
+
+
 
 
 //引入users.js
@@ -47,6 +50,10 @@ mongoose.connect(db)
 
 //配置passpost
 require("./config/passport")(passport);
+
+var history = require('connect-history-api-fallback');
+app.use(history({  rewrites: [    { from: /^\/wap\/.*$/, to: '/index.html' } 
+]}));
 
 //用中间件使用路由!
 // //使用routes
