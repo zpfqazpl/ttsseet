@@ -53,19 +53,19 @@ mongoose.connect(db)
 //配置passpost
 require("./config/passport")(passport);
 
-// const history = require('connect-history-api-fallback');
+const history = require('connect-history-api-fallback');
 
-// app.use(history({  rewrites: [   
-//    {  
-//       from: /^\/api\/.*$/,
-//         to: function(context) {
-//             return context.parsedUrl.path
+app.use(history({  rewrites: [   
+   {  
+      from: /^\/api\/.*$/,
+        to: function(context) {
+            return  '/index.html'
 
-//   } 
-// ]}));;
-app.use('/*',function(req,res,next){
-res.sendFile('index.html');
-});
+  } 
+]}));;
+// app.use('/*',function(req,res,next){
+// res.sendFile('index.html');
+// });
 
 //用中间件使用路由!
 // //使用routes
