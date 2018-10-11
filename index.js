@@ -7,6 +7,8 @@ const mongoose =require("mongoose")
 //引入passport
 const passport = require("passport")
 
+
+
 //passport初始化
 app.use(passport.initialize());
 //引入body-parser
@@ -51,12 +53,19 @@ mongoose.connect(db)
 //配置passpost
 require("./config/passport")(passport);
 
-const history = require('connect-history-api-fallback');
-app.use(history({  rewrites: [   
-   {  index: '/index.html',
-     htmlAcceptHeaders: ['text/html', 'application/xhtml+xml'] 
-  } 
-]}));;
+// const history = require('connect-history-api-fallback');
+
+// app.use(history({  rewrites: [   
+//    {  
+//       from: /^\/api\/.*$/,
+//         to: function(context) {
+//             return context.parsedUrl.path
+
+//   } 
+// ]}));;
+app.use('/*',function(req,res,next){
+res.sendFile('index.html');
+});
 
 //用中间件使用路由!
 // //使用routes
