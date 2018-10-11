@@ -16,14 +16,7 @@ const bodyParser = require("body-parser")
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 //router解析
-app.use(history(
-    {
-        rewrites: [
-            { from: /^\/wap\/.*$/, to: '/index.html' }
-            ]
-    }
-))
-app.use(express.static(path.join(__dirname,'../dist')))
+
 
 
 
