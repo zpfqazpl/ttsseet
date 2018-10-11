@@ -21,7 +21,11 @@ res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
 res.header("X-Powered-By",' 3.2.1') 
 if(req.method=="OPTIONS") res.send(200);
 /*让options请求快速返回*/ else next(); });
-
+//router解析
+const history = require('connect-history-api-fallback');
+//这句代码需要在express.static上面
+app.use(history());
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
 //引入users.js
 
