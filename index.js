@@ -53,8 +53,8 @@ require("./config/passport")(passport);
 
 const history = require('connect-history-api-fallback');
 app.use(history({  rewrites: [   
-   { from: /^\/wap\/.*$/, to: '/index.html',
-   htmlAcceptHeaders: ['text/html', 'application/xhtml+xml'] 
+   {  index: '/index.html',
+     htmlAcceptHeaders: ['text/html', 'application/xhtml+xml'] 
   } 
 ]}));;
 
