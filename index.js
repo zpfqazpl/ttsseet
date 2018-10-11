@@ -52,8 +52,11 @@ mongoose.connect(db)
 require("./config/passport")(passport);
 
 const history = require('connect-history-api-fallback');
-app.use(history({  rewrites: [    { from: /^\/wap\/.*$/, to: '/index.html' } 
-]}));
+app.use(history({  rewrites: [   
+   { from: /^\/wap\/.*$/, to: '/index.html',
+   htmlAcceptHeaders: ['text/html', 'application/xhtml+xml'] 
+  } 
+]}));;
 
 //用中间件使用路由!
 // //使用routes
