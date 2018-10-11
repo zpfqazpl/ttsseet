@@ -27,9 +27,6 @@ res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
 res.header("X-Powered-By",' 3.2.1') 
 if(req.method=="OPTIONS") res.send(200);
 /*让options请求快速返回*/ else next(); });
-app.get('/^\/api\/.*$/', (req, res) => {
-    res.sendFile('/index.html');
-});
 
 
 
@@ -55,21 +52,20 @@ mongoose.connect(db)
 //配置passpost
 require("./config/passport")(passport);
 
-// const history = require('connect-history-api-fallback');
+const history = require('connect-history-api-fallback');
 
-// app.use(history({
-//     rewrites:
-//         [
+app.use(history({
+    rewrites:
+        [
 
-//             {
-//                 from: /^\/api\/.*$/,
-//                 to: function (context) {
-//                     return '/index.html'
+            {
+                from: /^\/api\/.*$/,
+                to: '/index.html'
 
-//                 }
-//             }
-//         ]
-// }));;
+                
+            }
+        ]
+}));;
 // app.use('/*',function(req,res,next){
 // res.sendFile('index.html');
 // });
