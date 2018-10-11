@@ -6,7 +6,8 @@ const mongoose =require("mongoose")
 
 //引入passport
 const passport = require("passport")
-
+const history = require('connect-history-api-fallback')
+const path = require('path')
 //passport初始化
 app.use(passport.initialize());
 //引入body-parser
@@ -15,7 +16,14 @@ const bodyParser = require("body-parser")
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 //router解析
-
+app.use(history(
+    {
+        rewrites: [
+            { from: /^\/wap\/.*$/, to: '/index.html' }
+            ]
+    }
+))
+app.use(express.static(path.join(__dirname,'../dist')))
 
 
 
