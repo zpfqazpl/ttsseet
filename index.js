@@ -6,8 +6,7 @@ const mongoose =require("mongoose")
 
 //引入passport
 const passport = require("passport")
-const history = require('connect-history-api-fallback')
-const path = require('path')
+
 //passport初始化
 app.use(passport.initialize());
 //引入body-parser
