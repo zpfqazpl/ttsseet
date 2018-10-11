@@ -51,7 +51,7 @@ mongoose.connect(db)
 //配置passpost
 require("./config/passport")(passport);
 
-var history = require('connect-history-api-fallback');
+const history = require('connect-history-api-fallback');
 app.use(history({  rewrites: [    { from: /^\/wap\/.*$/, to: '/index.html' } 
 ]}));
 
