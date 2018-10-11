@@ -17,8 +17,13 @@ app.use(bodyParser.json());
 //router解析
 const history = require('connect-history-api-fallback');
 //这句代码需要在express.static上面
-app.use(history());
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(history(
+{
+    rewrites: [
+        { from: /^\/wap\/.*$/, to: '/index.html' }
+        ]
+}
+
 
 
 app.all('*', function(req, res, next) { res.header("Access-Control-Allow-Origin", "*"); 
